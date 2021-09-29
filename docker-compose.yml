@@ -1,0 +1,49 @@
+version: '3.9'
+
+networks:
+    laravel:
+
+services:
+    nginx:
+        image: nginx:stable-alpine
+        container_name: nginx
+        ports:
+            - "8088:80"
+        volumes:
+            - ./src:/var/www/html
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+            - mysql
+        networks:
+            - laravel
+
+    mysql:
+        image: mysql:8.0.25
+        container_name: mysql2
+        restart: unless-stopped
+        tty: true
+        ports: 
+            - "4306:3306"
+        volumes:
+            - ./src/mysql:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: egame
+            MYSQL_ROOT_PASSWORD: abao3023
+            SERVICE_TAG: dev
+            SERVICE_NAME: mysql
+        networks:
+            - laravel
+
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: php
+        volumes: 
+            - ./src:/var/www/html
+        ports:
+            - "9000:9000"
+        networks:
+            - laravel
+
