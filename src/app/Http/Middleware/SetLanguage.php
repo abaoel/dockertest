@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\App;
-use Illuminate\Support\facades\Session;
+//use Illuminate\Support\facades\Session;
 
 class SetLanguage
 {
@@ -25,12 +25,12 @@ class SetLanguage
         
         if(Session::get("locale") != null)
         {
-            App::setLocale(Session::get("locale"));
+           // App::setLocale(Session::get("locale"));
         }
         else
         {
-            Session::put("locale","en");
-            App::setLocale(Session::get("locale"));
+            //Session::put("locale","en");
+            //App::setLocale(Session::get("locale"));
         }
         
         return $next($request);
