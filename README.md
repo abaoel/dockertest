@@ -1,6 +1,6 @@
 ## Game Test
 
-<img src="./src/images/gameimage.png" alt="Italian Trulli">
+<img src="./src/images/gameimage.png" alt="Game Images">
 
 ## YouTube Tutorial
 https://www.youtube.com/watch?v=FPVnFZPErN4
